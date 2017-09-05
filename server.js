@@ -5,14 +5,31 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
-  title : 'Article One',
-  heading : 'Article One',
-  date : 'Sep 05,2017',
-  content : `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. Etiam diam ex, vestibulum id consequat vitae, feugiat quis orci. Cras in eros vel velit venenatis ornare id vel ipsum. Mauris vel libero massa.
-    </p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. Etiam diam ex, vestibulum id consequat vitae, feugiat quis orci. Cras in eros vel velit venenatis ornare id vel ipsum. Mauris vel libero massa.
-    </p>` 
+
+var articles = {
+    'article-one' : {
+        title : 'Article One',
+        heading : 'Article One',
+        date : 'Sep 05,2017',
+        content : `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. Etiam diam ex, vestibulum id consequat vitae, feugiat quis orci. Cras in eros vel velit venenatis ornare id vel ipsum. Mauris vel libero massa.
+            </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. Etiam diam ex, vestibulum id consequat vitae, feugiat quis orci. Cras in eros vel velit venenatis ornare id vel ipsum. Mauris vel libero massa.
+            </p>` 
+    },
+    'article-two' : {
+        title : 'Article Two',
+        heading : 'Article Two',
+        date : 'Sep 10,2017',
+        content : `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. Etiam diam ex, vestibulum id consequat vitae, feugiat quis orci. Cras in eros vel velit venenatis ornare id vel ipsum. Mauris vel libero massa.
+            </p>` 
+    },
+    'article-three' : {
+        title : 'Article Two',
+        heading : 'Article Two',
+        date : 'Sep 10,2017',
+        content : `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. 
+            </p>` 
+    }
 };
 
 function createTemplate(data){
@@ -20,7 +37,8 @@ function createTemplate(data){
     var heading = data.heading;
     var date = data.date;
     var content = data.content;
-    var htmlTemplate = `<html>
+    var htmlTemplate = 
+    `<html>
         <head>
             <title>${title}</title>
             <meta name="viewport" content="width=device-width initial-scale=1">
@@ -28,22 +46,11 @@ function createTemplate(data){
         </head>
         <body>
             <div class="container">
-                <div>
-                    <a href="/">Home</a>
-                </div>
-                
+                <div><a href="/">Home</a></div>
                 <hr/>
-                
                 <h3>${date}</h3>
-                
-                <div>
-                    ${date}
-                </div>
-                
-                <div>
-                    ${content}
-                </div>
-            
+                <div>${date}</div>
+                <div>${content}</div>
             </div>
         </body>
     </html>`;
@@ -54,8 +61,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req, res){
-   res.send(createTemplate(articleOne));
+app.get('/:articleName',function(req, res){
+   var articleName = req.params.articleName;
+   res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two',function(req, res){
