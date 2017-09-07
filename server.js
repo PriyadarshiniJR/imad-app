@@ -58,7 +58,7 @@ function createTemplate(data){
                 <div><a href="/">Home</a></div>
                 <hr/>
                 <h3>${heading}</h3>
-                <div>${date}</div>
+                <div>${date.toDateSring()}</div>
                 <div>${content}</div>
             </div>
         </body>
