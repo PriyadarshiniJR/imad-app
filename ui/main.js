@@ -8,12 +8,11 @@ submit.onclick = function(){
             if(request.status === 200){
                     console.log("Success");
                     alert("Logged in successfully!");
-                } else if(request.status===403) {
-                    alert("Username/Password is incorrect!");
-                } else if(request.status===500) {
-                    alert("Something went wrong on the server!");
-                }
             }
+                else if(request.status===403)
+                    alert("Username/Password is incorrect!");
+                else if(request.status===500)
+                    alert("Something went wrong on the server!");
         };
     };
     var username = document.getElementById('username').value;
@@ -23,4 +22,4 @@ submit.onclick = function(){
     request.open('POST','http://priyadarshinijr.imad.hasura-app.io/login',true);
     request.setRequestHeader('Content-Type:application/json');
     request.send(JSON.stringify({username: username,password: password}));
-}
+};
