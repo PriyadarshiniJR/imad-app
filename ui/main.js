@@ -13,7 +13,7 @@ submit.onclick = function(){
                     alert("Username/Password is incorrect!");
                 else if(request.status===500)
                     alert("Something went wrong on the server!");
-        };
+        }
     };
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
