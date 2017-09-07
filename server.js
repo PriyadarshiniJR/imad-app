@@ -15,32 +15,6 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articles = {
-    'article-one' : {
-        title : 'Article One',
-        heading : 'Article One',
-        date : 'Sep 05,2017',
-        content : `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. Etiam diam ex, vestibulum id consequat vitae, feugiat quis orci. Cras in eros vel velit venenatis ornare id vel ipsum. Mauris vel libero massa.
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. Etiam diam ex, vestibulum id consequat vitae, feugiat quis orci. Cras in eros vel velit venenatis ornare id vel ipsum. Mauris vel libero massa.
-            </p>` 
-    },
-    'article-two' : {
-        title : 'Article Two',
-        heading : 'Article Two',
-        date : 'Sep 10,2017',
-        content : `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. Etiam diam ex, vestibulum id consequat vitae, feugiat quis orci. Cras in eros vel velit venenatis ornare id vel ipsum. Mauris vel libero massa.
-            </p>` 
-    },
-    'article-three' : {
-        title : 'Article Two',
-        heading : 'Article Two',
-        date : 'Sep 10,2017',
-        content : `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum nunc non placerat lobortis. Etiam a sem luctus, ullamcorper sapien at, porttitor dui. Curabitur a ligula sed purus ornare pulvinar. Nullam augue quam, mollis eget nulla non, scelerisque pulvinar nisi. 
-            </p>` 
-    }
-};
-
 function createTemplate(data){
     var title = data.title;
     var heading = data.heading;
