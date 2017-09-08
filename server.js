@@ -151,6 +151,7 @@ app.get('/articles/:articleName',function(req, res){
    });
 });
 
+//Check Later
 app.get('/get-articles', function (req, res) {
    // make a select request
    // return a response with the results
@@ -206,6 +207,8 @@ app.post('/submit-comment/:articleName', function (req, res) {
         res.status(403).send('Only logged in users can comment');
     }
 });
+
+//End of Check Later
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
